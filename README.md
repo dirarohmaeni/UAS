@@ -118,3 +118,8 @@ Pastikan untuk memasukkan NIM yang unik. Jika NIM yang sama dimasukkan, program 
 
 Program ini bersifat open-source dan dapat digunakan, dimodifikasi, dan didistribusikan sesuai kebutuhan.
 
+
+# Link Youtube
+
+
+https://youtu.be/p9odSL70Q3I?si=a-J2KKLQm0K-bwmy

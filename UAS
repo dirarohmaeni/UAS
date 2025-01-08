@@ -1,0 +1,67 @@
+# Class untuk menyimpan data mahasiswa
+class Student:
+    def __init__(self, name, nim, jurusan):
+        self.name = name
+        self.nim = nim
+        self.jurusan = jurusan
+
+# Class untuk memproses data mahasiswa
+class StudentProcess:
+    def __init__(self):
+        self.students = []
+
+    def add_student(self, student):
+        # Memastikan NIM unik
+        for s in self.students:
+            if s.nim == student.nim:
+                print(f"NIM {student.nim} sudah ada. Mahasiswa tidak ditambahkan.")
+                return
+        self.students.append(student)
+
+    def get_students(self):
+        return self.students
+
+# Class untuk menampilkan data mahasiswa
+class StudentView:
+    def display_students(self, students):
+        print(f"\n{'Name':<26} {'Nim':<10} {'Jurusan':<15}")
+        print("-" * 55)
+        for student in students:
+            print(f"{student.name:<26} {student.nim:<10} {student.jurusan:<15}")
+
+# Fungsi untuk validasi input
+def validate_input(prompt, input_type):
+    while True:
+        try:
+            user_input = input(prompt)
+            if input_type == 'str':
+                return user_input.strip()  # Menghapus spasi di awal dan akhir
+            elif input_type == 'int':
+                return int(user_input)
+            else:
+                raise ValueError("Invalid input type")
+        except ValueError:
+            print("Input tidak valid. Silakan coba lagi.")
+
+# Fungsi utama
+def main():
+    process = StudentProcess()
+    view = StudentView()
+
+    while True:
+        name = validate_input("Masukkan nama mahasiswa: ", 'str')
+        nim = validate_input("Masukkan NIM mahasiswa: ", 'int')
+        jurusan = validate_input("Masukkan jurusan mahasiswa: ", 'str')
+
+        student = Student(name, nim, jurusan)
+        process.add_student(student)
+
+        another = input("Apakah Anda ingin menambahkan mahasiswa lain? (y/t): ")
+        if another.lower() != 'y':
+            break
+
+    # Menampilkan data mahasiswa
+    view.display_students(process.get_students())
+
+if __name__ == "__main__":
+    main()
